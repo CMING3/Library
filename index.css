@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-areas: 
+    "header header"
+    "sidebar library"
+    ;
+}
+
+@media only screen and (max-width:990px){
+    body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 0.3fr 1fr;
+        grid-template-areas: 
+        "header"
+        "sidebar"
+        "library"
+        ;
+    }
+}
+
+.header{
+    border: 1px solid black;
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header>h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.sidebar{
+    grid-area: sidebar;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+}
+
+form>button{
+    padding: 3px;
+    background-color: lightgreen;
+    border:1px solid lightgray;
+    border-radius: 4px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.library{
+    grid-area: library;
+    order: 1px solid black;
+}
+
