@@ -12,29 +12,43 @@
         <h1>Library</h1>
     </div>
     <div class="sidebar">
-        <form action="">
+        <form>
             <div>
                 <label for="title">Book title: </label>
-                <input type="text" name="title" id="name">
+                <input type="text" name="title" id="title" required>
             </div>
             <div>
                 <label for="author">Author: </label>
-                <input type="text" name="author" id="author">
+                <input type="text" name="author" id="author" required>
             </div>
             <div>
                 <label for="pages">Page number: </label>
-                <input type="number" name="pages" id="pages">
+                <input type="number" name="pages" id="pages" required>
             </div>
             <div>
                 <label for="read">Have you read it?</label>
                 <input type="checkbox" name="read" id="read">
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit">Submit</button>
         </form>
+        <br>
+        <p class="err-msg">Please fill in book title, author and page number.</p>
     </div>
 
     <div class="library">
-
+        <!--book format-->
+        <!-- 
+        <div class="book">
+            <h2>Title:</h2>
+            <p class="title">test</p>
+            <h2>Author: </h2>
+            <p class="author">test</p>
+            <h2>pages: </h2>
+            <p class="pages">1</p>
+            <button class="read not">Not Read</button>
+            <button class="remove">Remove</button>
+        </div> 
+        -->
     </div>
     
 </body>
