@@ -69,11 +69,11 @@ function renderBook(){
                 <h2>pages: </h2>
                 <p class="pages">${pages}</p>
                 <button class="read ${readClass}" 
-                onclick="changeReadStatus(${title})">
+                onclick="changeReadStatus('${title}')">
                     ${readStatus}
                 </button>
                 <button class="remove"
-                onclick="removeBook(${title})">Remove</button>
+                onclick="removeBook('${title}')">Remove</button>
             </div> 
             `
     }).join("");
@@ -81,7 +81,7 @@ function renderBook(){
 
 
 function changeReadStatus(title){
-    let search = myLibrary.find(x=>x.title===String(title))
+    let search = myLibrary.find(x=>x.title===title)
     if (!search.read){
         search.read=true
     }else{
@@ -90,8 +90,8 @@ function changeReadStatus(title){
     renderBook()
 }
 
-function removeBook(title, author, pages, read){
-    let filteredLibrary = myLibrary.filter(x=>x.title!==String(title))
+function removeBook(title){
+    let filteredLibrary = myLibrary.filter(x=>x.title!==title)
     myLibrary = filteredLibrary
     renderBook()
 }
