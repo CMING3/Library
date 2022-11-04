@@ -23,17 +23,21 @@ function getForm(event){
     const pages = document.querySelector("#pages");
     const read = document.querySelector("#read");
     const errMsg = document.querySelector(".err-msg")
-    if (title.value !== "" && author.value !== "" && pages.value !== ""){
+    let search = myLibrary.find(x=>x.title===title.value)
+    if (search){
+        errMsg.style.display="block";
+        errMsg.innerHTML=`There already have a same book name in the Library.`
+    }else if (title.value !== "" && author.value !== "" && pages.value !== ""){
         errMsg.style.display="none";
         if(read.checked){
             addBookToLibrary(title.value, author.value, pages.value, true)
         }else{
             addBookToLibrary(title.value, author.value, pages.value, false)
         }
-        form.reset();  
-        
+        form.reset(); 
     }else{
-        errMsg.style.display="block"
+        errMsg.style.display="block";
+        errMsg.innerHTML=`Please fill in book title, author and page number.`
     }
 }
 
@@ -64,8 +68,12 @@ function renderBook(){
                 <p class="author">${author}</p>
                 <h2>pages: </h2>
                 <p class="pages">${pages}</p>
-                <button class="read ${readClass}">${readStatus}</button>
-                <button class="remove">Remove</button>
+                <button class="read ${readClass}" 
+                onclick="changeReadStatus(${title})">
+                    ${readStatus}
+                </button>
+                <button class="remove"
+                onclick="removeBook(${title})">Remove</button>
             </div> 
             `
     }).join("");
@@ -73,5 +81,17 @@ function renderBook(){
 
 
 function changeReadStatus(title){
+    let search = myLibrary.find(x=>x.title===String(title))
+    if (!search.read){
+        search.read=true
+    }else{
+        search.read=false
+    }
+    renderBook()
+}
 
+function removeBook(title, author, pages, read){
+    let filteredLibrary = myLibrary.filter(x=>x.title!==String(title))
+    myLibrary = filteredLibrary
+    renderBook()
 }
