@@ -120,7 +120,5 @@ form div{
 }
 
 .err-msg{
-    display: none;
     color: red;
-
 }
